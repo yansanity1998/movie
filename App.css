@@ -1,0 +1,559 @@
+* {
+  margin: 0;
+  padding: 0;
+  
+}
+
+body {
+  background: black;
+  background-image: linear-gradient(to bottom right, rgba(203, 27, 97, 0.652), rgb(0, 0, 0) 100%);
+  height: 451vh;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  padding: 0 10px;
+  overflow-x: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center; 
+  border-radius: 5px;
+  background: #000000a9;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  justify-content: space-between; 
+}
+
+.logo {
+  width: 52px; 
+  height: 25px; 
+  margin-right: 10px; 
+  margin-left: 10px;
+}
+
+.logo:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.search-form {
+  display: flex;
+  height: 32px;
+  width: 100%;
+  max-width: 380px;
+  margin-left: 10px;
+  color: rgb(11, 11, 11);
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.681);
+  font-size: 14px;
+  padding: 5px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 40px;
+  background: #b3abab2b;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.Nav {
+  display: flex; 
+  gap: 30px; 
+  margin-top: 8px;
+  margin-left: auto; 
+  margin-right: 15px;
+  color: rgba(255, 255, 255, 0.814);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.Nav span:hover {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-toggle {
+  display: none; 
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.divider {
+  margin-top: -5px;
+  border-left: 2px solid rgb(42, 38, 38);
+  height: 30px;
+}
+
+.login {
+  display: flex;
+  margin-top: -5px;
+  margin-right: 10px;
+}
+
+.login p {
+  margin-top: 5px;
+  margin-right: 25px;
+  color: rgba(255, 255, 255, 0.827);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.login p:hover {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.login button {
+  margin-top: -3px;
+  padding: 0px 8px;
+  border-radius: 5px;
+  border: 1px solid black;
+  background-color: rgb(252, 162, 38);
+  color: black;
+  font-size: 12px;
+  font-weight: bolder;
+}
+
+.login button:hover {
+  background-color: rgb(251, 173, 64);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.movies-section {
+  padding: 15px;
+}
+
+.movie-poster {
+  width: 100%;
+  max-width: 300px; 
+  height: auto; 
+  
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.message, .loading {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.loading {
+  color: #f1f1f1;
+}
+
+.poster {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  backface-visibility: hidden;
+}
+
+.movie-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.movie-info {
+  padding: 1rem;
+}
+
+.movie-info h3 {
+  font-size: 0.9rem;
+}
+
+.movie-meta {
+  margin-top: 0.3rem;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.year {
+  padding: 2px 0px;
+  font-size: small;
+}
+
+.movie-container {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 5px;
+}
+
+.movie-container:hover {
+  border-radius: 5px;
+  cursor: pointer;
+  transform: scale(1.05); 
+  box-shadow: 0 2px 5px rgb(176, 175, 175);
+}
+
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .header {
+    display: flex; 
+  }
+
+  .logo {
+    width: 50px; 
+    height: 25px;
+    margin-left: 15px;
+  }
+
+  .search-form {
+    max-width: 60%; 
+    margin-left: -250px;
+  }
+
+  .Nav {
+    display: none;
+    flex-direction: column; 
+    position: fixed;
+    z-index: 1000;
+    top: 13px; 
+    right: 39px;
+    background: #505358;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .Nav.active {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .nav-toggle {
+    display: block; 
+    margin-top: -4px;
+    margin-right: 20px;
+    font-size: medium;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .login {
+    flex-direction: column; 
+    align-items: flex-start; 
+    margin-left: 0; 
+    margin-right: 0; 
+  }
+
+  .login p {
+    margin: 5px 0; 
+  }
+
+  .login button {
+    margin: 8px 0;
+    padding: 3px 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    display: flex; 
+  }
+
+  .logo {
+    width: 50px; 
+    height: 25px;
+    margin-left: 15px;
+  }
+
+  .search-form {
+    max-width: 60%; 
+    margin-left: -150px;
+  }
+
+  .Nav {
+    display: none;
+    flex-direction: column; 
+    top: 15px; 
+    right: 35px;
+    background: #505358;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 10px;
+  }
+
+  .nav-toggle {
+    display: block; 
+    margin-top: -4px;
+    margin-right: 20px;
+    font-size: small;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .login {
+    flex-direction: column; 
+    align-items: flex-start; 
+    margin-left: 0; 
+    margin-right: 0; 
+  }
+
+  .login p {
+    margin: 5px 0; 
+    font-size: 10px;
+  }
+
+  .login button {
+    font-size: 9px;
+    margin: 8px 0;
+    padding: 3px 8px;
+  }
+
+  .movies-section {
+    padding: 5px;
+  }
+
+  .movie-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+  }
+
+  .movie-info h3 {
+    font-size: 0.8rem; 
+  }
+
+  .movie-meta {
+    font-size: 0.8rem; 
+  }
+
+ 
+}
+
+
+@media (max-width: 624px) {
+  .header {
+    display: flex; 
+  }
+
+  .logo {
+    width: 50px; 
+    height: 25px;
+    margin-left: 5px;
+  }
+
+  .search-form {
+    max-width: 60%; 
+    margin-left: -45px;
+  }
+
+  .Nav {
+    display: none;
+    flex-direction: column; 
+    top: 15px; 
+    right: 35px;
+    background: #505358;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 10px;
+  }
+
+  .nav-toggle {
+    display: block; 
+    margin-top: -4px;
+    margin-right: 20px;
+    font-size: small;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .login {
+    flex-direction: column; 
+    align-items: flex-start; 
+    margin-left: 0; 
+    margin-right: 0; 
+  }
+
+  .login p {
+    margin: 5px 0; 
+    font-size: 10px;
+  }
+
+  .login button {
+    font-size: 9px;
+    margin: 8px 0;
+    padding: 3px 8px;
+  }
+
+  .movie-grid {
+    grid-template-columns: repeat(auto-fill, minmax(105px, 1fr)); 
+    gap: 12px;
+  }
+
+  .movie-info h3 {
+    font-size: 0.7rem;
+  }
+
+  .movie-meta {
+    font-size: 0.8rem; 
+  }
+
+  .year {
+    padding: 2px 0px;
+    font-size: smaller;
+  }
+
+}
+
+
+@media (max-width: 425px) {
+  .header {
+    display: flex; 
+  }
+
+  .logo {
+    width: 50px; 
+    height: 25px;
+    margin-left: 5px;
+  }
+
+  .search-form {
+    max-width: 60%; 
+    margin-left: -35px;
+  }
+
+  .Nav {
+    display: none;
+    flex-direction: column; 
+    top: 15px; 
+    right: 35px;
+    background: #505358;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 10px;
+  }
+
+  .nav-toggle {
+    display: block; 
+    margin-top: -4px;
+    margin-right: 20px;
+    font-size: small;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .login {
+    flex-direction: column; 
+    align-items: flex-start; 
+    margin-left: 0; 
+    margin-right: 0; 
+  }
+
+  .login p {
+    margin: 5px 0; 
+    font-size: 10px;
+  }
+
+  .login button {
+    font-size: 9px;
+    margin: 8px 0;
+    padding: 3px 8px;
+  }
+
+  .movie-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .movie-info h3 {
+    font-size: 0.8rem;
+  }
+
+  .movie-meta {
+    font-size: 0.8rem; 
+  }
+}
+
+
+@media (max-width: 320px) {
+  .header {
+    display: flex; 
+  }
+
+  .logo {
+    width: 35px; 
+    height: 20px;
+    margin-left: 5px;
+  }
+
+  .search-form {
+    max-width: 30%; 
+    margin-left: -135px;
+  }
+
+  .Nav {
+    display: none;
+    flex-direction: column; 
+    top: 15px; 
+    right: 20px;
+    background: #505358;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 10px;
+  }
+
+  .nav-toggle {
+    display: block; 
+    margin-top: -4px;
+    margin-right: 5px;
+    font-size: small;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .login {
+    flex-direction: column; 
+    align-items: flex-start; 
+    margin-left: 0; 
+    margin-right: 0; 
+  }
+
+  .login p {
+    margin: 5px 0; 
+    font-size: 10px;
+  }
+
+  .login button {
+    font-size: 9px;
+    margin: 8px 0;
+    padding: 3px 8px;
+  }
+  
+  .movie-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+
+  .movie-info h3 {
+    font-size: 0.7rem;
+  }
+
+  .movie-meta {
+    font-size: 0.7rem; 
+  }
+}
